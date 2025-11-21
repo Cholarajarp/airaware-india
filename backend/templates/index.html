@@ -12,73 +12,47 @@
     <style>
         /* Base Dark Theme Variables */
         :root {
-            --bg-dark: #0F172A;
-            --bg-card: #1E293B;
-            --bg-hover: #334155;
-            --text-primary: #F1F5F9;
-            --text-secondary: #94A3B8;
-            --accent: #06B6D4;
-            --accent-hover: #0891B2;
-            --border: #334155;
+            --bg-dark: #0F172A; --bg-card: #1E293B; --bg-hover: #334155;
+            --text-primary: #F1F5F9; --text-secondary: #94A3B8;
+            --accent: #06B6D4; --accent-hover: #0891B2; --border: #334155;
             /* AQI Colors (High Contrast) */
-            --aqi-good: #22C55E;
-            --aqi-moderate: #FBBF24;
-            --aqi-unhealthy: #F97316;
-            --aqi-vunhealthy: #EF4444;
-            --aqi-hazardous: #991B1B;
+            --aqi-good: #22C55E; --aqi-moderate: #FBBF24; --aqi-unhealthy: #F97316;
+            --aqi-vunhealthy: #EF4444; --aqi-hazardous: #991B1B;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding-bottom: 50px;
+            background: var(--bg-dark); color: var(--text-primary); line-height: 1.6;
+            min-height: 100vh; padding-bottom: 50px;
         }
 
         /* Container & Layout */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            max-width: 1200px; margin: 0 auto; padding: 20px; 
+            display: grid; grid-template-columns: 1fr; gap: 25px;
+            /* Added min-height to help prevent aesthetic stretching on mobile */
+            min-height: 80vh; 
         }
-        
         .card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            background: var(--bg-card); border-radius: 12px; padding: 24px;
+            border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
-
-        /* Utility classes */
         .flex-row { display: flex; align-items: center; }
         .flex-col { display: flex; flex-direction: column; }
-
-        /* Header */
         header { justify-content: space-between; padding: 15px 0; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
         .brand { gap: 12px; }
         .brand-icon { font-size: 28px; color: var(--accent); }
         .brand-text h1 { font-size: 20px; font-weight: 700; }
         .brand-text p { font-size: 13px; color: var(--text-secondary); }
 
-        /* Inputs and Buttons */
-        select, input, textarea {
+        /* Inputs and Buttons (Optimized) */
+        input, textarea {
             width: 100%; padding: 12px 16px; background: var(--bg-dark); border: 1px solid var(--border);
             border-radius: 8px; color: var(--text-primary); font-size: 15px; font-family: inherit; transition: all 0.2s;
         }
-        select:focus, input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
 
         .btn {
             padding: 10px 18px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
@@ -90,9 +64,42 @@
         .btn-outline:hover { background: var(--bg-hover); color: var(--text-primary); }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* City Selector */
-        .city-select-group {
+        /* City Selector (Searchable Input Fix) */
+        .city-select-group { 
             display: grid; grid-template-columns: 3fr 1fr; gap: 15px; margin-bottom: 20px;
+            position: relative;
+        }
+        .search-container {
+            position: relative;
+        }
+        #citySearchInput {
+            border-radius: 8px;
+            padding-right: 40px; /* Space for icon */
+        }
+        .search-icon {
+            position: absolute; right: 15px; top: 13px; color: var(--text-secondary);
+        }
+        #cityDropdown {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 0 0 8px 8px;
+            border-top: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+        .dropdown-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.1s;
+        }
+        .dropdown-item:hover {
+            background: var(--bg-hover);
         }
         
         /* AQI Hero Display */
@@ -215,11 +222,20 @@
         <!-- Main Content Panel -->
         <div class="aqi-main-panel">
             <div class="card">
-                <h2 class="form-label" id="select-city-label">1. Select City to Check</h2>
+                <h2 class="form-label" id="select-city-label">1. Search City to Check</h2>
                 <div class="city-select-group">
-                    <select id="citySelect" aria-label="Select city">
-                        <option value="">-- Choose a city (200+ available) --</option>
-                    </select>
+                    
+                    <!-- Search Input and Dropdown Container -->
+                    <div class="search-container">
+                        <input type="text" id="citySearchInput" placeholder="Type city name (e.g., Delhi, Pune...)" aria-label="Search city name for AQI check">
+                        <span class="search-icon">🔍</span>
+                        <div id="cityDropdown">
+                            <!-- Search results injected here -->
+                        </div>
+                        <!-- Hidden input to store selected city ID -->
+                        <input type="hidden" id="citySelect" value=""> 
+                    </div>
+
                     <button class="btn btn-primary" id="checkAqiBtn" disabled>
                         <span id="check-btn-text">Check AQI</span>
                     </button>
@@ -347,7 +363,7 @@
         const translations = {
             en: {
                 'header-title': 'AirAware India', 'app-subtitle': 'Free Air Safety Monitor',
-                'select-city-label': '1. Select City to Check', 'check-btn-text': 'Check AQI',
+                'select-city-label': '1. Search City to Check', 'check-btn-text': 'Check AQI',
                 'share-btn-text': 'Share Alert', 'report-btn-text': 'Report Issue',
                 'forecast-title': '24-Hour Forecast', 'heatmap-title': 'Top 15 City Status',
                 'subscribe-title': 'Get Daily Alerts', 'subscribe-btn-text': 'Subscribe Now',
@@ -364,7 +380,7 @@
             },
             hi: {
                 'header-title': 'वायुमित्र भारत', 'app-subtitle': 'मुफ़्त वायु सुरक्षा मॉनिटर',
-                'select-city-label': '1. जाँच के लिए शहर चुनें', 'check-btn-text': 'AQI जांचें',
+                'select-city-label': '1. जाँच के लिए शहर खोजें', 'check-btn-text': 'AQI जांचें',
                 'share-btn-text': 'चेतावनी शेयर करें', 'report-btn-text': 'समस्या रिपोर्ट करें',
                 'forecast-title': '24 घंटे का पूर्वानुमान', 'heatmap-title': 'शीर्ष 15 शहर स्थिति',
                 'subscribe-title': 'दैनिक अलर्ट पाएं', 'subscribe-btn-text': 'अभी सदस्यता लें',
@@ -412,36 +428,61 @@
             try {
                 const response = await fetch('/api/cities');
                 citiesData = await response.json(); // Load ALL 200+ cities
-                const select = document.getElementById('citySelect');
-
-                // Load ALL 200+ cities into the search/selector dropdown
-                citiesData.forEach(city => {
-                    const option = document.createElement('option');
-                    option.value = city.id;
-                    option.textContent = `${city.name}, ${city.state}`;
-                    select.appendChild(option);
-                });
                 
-                // Then, load the heatmap using only the priority subset
+                // Init: Put first 10 cities into the dropdown to show suggestions immediately
+                renderCityDropdown(citiesData.slice(0, 10)); 
+                
                 loadHeatmap(); 
             } catch (error) {
                 console.error('Error loading cities:', error);
             }
+        }
+        
+        function renderCityDropdown(filteredCities) {
+            const dropdown = document.getElementById('cityDropdown');
+            dropdown.innerHTML = '';
+            
+            if (filteredCities.length === 0) {
+                 const item = document.createElement('div');
+                 item.className = 'dropdown-item';
+                 item.textContent = 'No cities found.';
+                 dropdown.appendChild(item);
+                 dropdown.style.display = 'block';
+                 return;
+            }
+
+            filteredCities.forEach(city => {
+                const item = document.createElement('div');
+                item.className = 'dropdown-item';
+                item.textContent = `${city.name}, ${city.state}`;
+                item.setAttribute('data-city-id', city.id);
+                item.onclick = () => selectCityFromDropdown(city.id, city.name);
+                dropdown.appendChild(item);
+            });
+            dropdown.style.display = 'block';
+        }
+
+        function selectCityFromDropdown(id, name) {
+            document.getElementById('citySelect').value = id;
+            document.getElementById('citySearchInput').value = `${name}`; // Keep the name visible
+            document.getElementById('cityDropdown').style.display = 'none';
+            document.getElementById('checkAqiBtn').disabled = false;
         }
 
         async function loadHeatmap() {
             const heatmapGrid = document.getElementById('heatmapGrid');
             heatmapGrid.innerHTML = '';
             
-            // OPTIMIZATION: Use only the first 15 cities for the dashboard view
+            // Optimization: Use only the first 15 cities for the dashboard view
             const priorityCities = citiesData.slice(0, 15);
             
             for (const city of priorityCities) {
                 try {
-                    // Fetch AQI for the priority city (will use sample data quickly)
                     const response = await fetch(`/api/aqi?city=${city.id}`);
                     const data = await response.json();
                     
+                    if (data.error) throw new Error(data.error);
+
                     const { color, label } = getAQIInfo(data.aqi);
                     
                     const cityDiv = document.createElement('div');
@@ -453,8 +494,7 @@
                         <div class="heatmap-aqi">${data.aqi}</div>
                     `;
                     cityDiv.onclick = () => {
-                        document.getElementById('citySelect').value = city.id;
-                        document.getElementById('checkAqiBtn').disabled = false;
+                        selectCityFromDropdown(city.id, city.name);
                         checkAQI();
                         cityDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     };
@@ -462,10 +502,9 @@
 
                 } catch (error) {
                     console.error(`Error loading AQI for heatmap ${city.id}:`, error);
-                    // Fallback to grey placeholder
                     const fallbackDiv = document.createElement('div');
                     fallbackDiv.className = 'heatmap-city';
-                    fallbackDiv.style.backgroundColor = 'var(--text-secondary)';
+                    fallbackDiv.style.backgroundColor = 'var(--bg-hover)';
                     fallbackDiv.innerHTML = `<div class="heatmap-name">${city.name}</div><div class="heatmap-aqi">--</div>`;
                     heatmapGrid.appendChild(fallbackDiv);
                 }
@@ -473,10 +512,39 @@
         }
 
         function setupEventListeners() {
-            document.getElementById('citySelect').addEventListener('change', (e) => {
-                document.getElementById('checkAqiBtn').disabled = !e.target.value;
+            const searchInput = document.getElementById('citySearchInput');
+            
+            // 1. Live Filtering on Input
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                document.getElementById('citySelect').value = ''; 
+                document.getElementById('checkAqiBtn').disabled = true;
+
+                if (query.length < 2) {
+                    document.getElementById('cityDropdown').style.display = 'none';
+                    return;
+                }
+                
+                const filtered = citiesData.filter(city => 
+                    city.name.toLowerCase().includes(query) || 
+                    city.state.toLowerCase().includes(query) ||
+                    city.id.includes(query)
+                ).slice(0, 20); // Limit results to 20
+                
+                renderCityDropdown(filtered);
             });
+            
+            // 2. Select button trigger
             document.getElementById('checkAqiBtn').addEventListener('click', checkAQI);
+
+            // 3. Hide dropdown when clicking elsewhere
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !document.getElementById('cityDropdown').contains(e.target)) {
+                    document.getElementById('cityDropdown').style.display = 'none';
+                }
+            });
+            
+            // 4. Other actions
             document.getElementById('shareBtn').addEventListener('click', shareOnWhatsApp);
             document.getElementById('reportBtn').addEventListener('click', openReportModal);
             document.getElementById('closeModalBtn').addEventListener('click', closeReportModal);
@@ -490,7 +558,10 @@
 
         async function checkAQI() {
             const cityId = document.getElementById('citySelect').value;
-            if (!cityId) return;
+            if (!cityId) {
+                showStatusMessage("Select Error", currentLang === 'en' ? 'Please select a city from the dropdown suggestions first.' : 'कृपया पहले ड्रॉपडाउन सुझावों में से एक शहर चुनें।');
+                return;
+            }
             currentCityID = cityId;
 
             const btn = document.getElementById('checkAqiBtn');
@@ -499,13 +570,17 @@
             btn.disabled = true;
 
             try {
+                // Fetch AQI data
                 const aqiResponse = await fetch(`/api/aqi?city=${cityId}`);
                 const aqiData = await aqiResponse.json();
-                
+                if (aqiData.error) throw new Error(aqiData.error);
+
+                // Fetch prediction data (must follow AQI fetch)
                 const predResponse = await fetch(`/api/predict?city=${cityId}&hours=24`);
                 const predData = await predResponse.json();
                 
-                if (aqiData.error) throw new Error(aqiData.error);
+                if (predData.error) throw new Error(predData.error);
+
 
                 currentCityName = aqiData.city;
                 displayAQI(aqiData);
@@ -516,8 +591,7 @@
 
             } catch (error) {
                 console.error('Error fetching data:', error);
-                // Use custom modal or message box instead of alert
-                showStatusMessage('Error', `${translate('loading')} failed. Using sample data.`);
+                showStatusMessage(currentLang === 'en' ? 'Data Error' : 'डेटा त्रुटि', `${error.message}. ${currentLang === 'en' ? 'Check server logs for details.' : 'विवरण के लिए सर्वर लॉग जांचें।'} `);
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -565,7 +639,7 @@
             alert.className = `alert-box ${alertClass}`;
             document.getElementById('safeTimeText').textContent = translate(message);
             document.getElementById('safeTimeIcon').textContent = icon;
-            document.getElementById('safeTimeIcon').style.color = 'inherit'; // Ensure icon color is inherited from alert box
+            document.getElementById('safeTimeIcon').style.color = 'inherit';
         }
 
         function displayForecast(data) {
@@ -599,8 +673,7 @@
             currentLang = currentLang === 'en' ? 'hi' : 'en';
             document.getElementById('lang-text').textContent = currentLang === 'en' ? '🌐 हिंदी' : '🌐 English';
             updateUILanguage();
-            // Re-render heatmap to update localized titles/tooltips
-            loadHeatmap(); 
+            loadHeatmap();
         }
 
         function updateUILanguage() {
@@ -642,7 +715,6 @@
 
         // --- SUBMISSION HANDLERS ---
         
-        // Simplified message box replacement for alert()
         function showStatusMessage(title, message) {
             const modal = document.getElementById('reportModal');
             document.getElementById('modal-title').textContent = title;
@@ -676,7 +748,7 @@
             }
             document.getElementById('reportCity').value = currentCityName;
             document.getElementById('reportModal').classList.add('show');
-            document.getElementById('reportForm').style.display = 'block'; // Show form
+            document.getElementById('reportForm').style.display = 'block'; 
             document.getElementById('modal-title').textContent = translate('modal-title');
             document.getElementById('form-city-label').textContent = translate('form-city-label');
         }
@@ -684,6 +756,9 @@
         function closeReportModal() {
             document.getElementById('reportModal').classList.remove('show');
             document.getElementById('reportForm').reset();
+            // Restore form label when closing a message
+            document.getElementById('form-city-label').textContent = translate('form-city-label');
+            document.getElementById('reportForm').style.display = 'block';
         }
 
         async function submitReport(e) {

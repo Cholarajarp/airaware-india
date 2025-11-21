@@ -1,0 +1,1676 @@
+{
+  "agartala": {
+    "city": "Agartala",
+    "aqi": 134,
+    "pm25": 55,
+    "pm10": 87,
+    "o3": 61,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "agra": {
+    "city": "Agra",
+    "aqi": 148,
+    "pm25": 68,
+    "pm10": 96,
+    "o3": 62,
+    "no2": 55,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ahmedabad": {
+    "city": "Ahmedabad",
+    "aqi": 185,
+    "pm25": 83,
+    "pm10": 125,
+    "o3": 44,
+    "no2": 56,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "aizawl": {
+    "city": "Aizawl",
+    "aqi": 31,
+    "pm25": 13,
+    "pm10": 20,
+    "o3": 68,
+    "no2": 49,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "akola": {
+    "city": "Akola",
+    "aqi": 266,
+    "pm25": 126,
+    "pm10": 160,
+    "o3": 69,
+    "no2": 67,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "aligarh": {
+    "city": "Aligarh",
+    "aqi": 102,
+    "pm25": 48,
+    "pm10": 69,
+    "o3": 47,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "allahabad": {
+    "city": "Prayagraj",
+    "aqi": 130,
+    "pm25": 56,
+    "pm10": 85,
+    "o3": 62,
+    "no2": 39,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "alwar": {
+    "city": "Alwar",
+    "aqi": 257,
+    "pm25": 104,
+    "pm10": 164,
+    "o3": 53,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "amritsar": {
+    "city": "Amritsar",
+    "aqi": 141,
+    "pm25": 61,
+    "pm10": 96,
+    "o3": 40,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "anand": {
+    "city": "Anand",
+    "aqi": 154,
+    "pm25": 65,
+    "pm10": 95,
+    "o3": 58,
+    "no2": 52,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ankleshwar": {
+    "city": "Ankleshwar",
+    "aqi": 246,
+    "pm25": 106,
+    "pm10": 167,
+    "o3": 53,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "aurangabad": {
+    "city": "Aurangabad",
+    "aqi": 233,
+    "pm25": 98,
+    "pm10": 142,
+    "o3": 45,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "badlapur": {
+    "city": "Badlapur",
+    "aqi": 129,
+    "pm25": 58,
+    "pm10": 82,
+    "o3": 58,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bahadurgarh": {
+    "city": "Bahadurgarh",
+    "aqi": 84,
+    "pm25": 36,
+    "pm10": 50,
+    "o3": 47,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "balasore": {
+    "city": "Balasore",
+    "aqi": 173,
+    "pm25": 84,
+    "pm10": 115,
+    "o3": 68,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bangalore": {
+    "city": "Bengaluru",
+    "aqi": 213,
+    "pm25": 85,
+    "pm10": 128,
+    "o3": 46,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bareilly": {
+    "city": "Bareilly",
+    "aqi": 92,
+    "pm25": 45,
+    "pm10": 59,
+    "o3": 36,
+    "no2": 56,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bathinda": {
+    "city": "Bathinda",
+    "aqi": 235,
+    "pm25": 100,
+    "pm10": 163,
+    "o3": 33,
+    "no2": 51,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhagalpur": {
+    "city": "Bhagalpur",
+    "aqi": 224,
+    "pm25": 104,
+    "pm10": 146,
+    "o3": 62,
+    "no2": 42,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhiwadi": {
+    "city": "Bhiwadi",
+    "aqi": 190,
+    "pm25": 91,
+    "pm10": 115,
+    "o3": 70,
+    "no2": 50,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhopal": {
+    "city": "Bhopal",
+    "aqi": 173,
+    "pm25": 83,
+    "pm10": 105,
+    "o3": 44,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhubaneswar": {
+    "city": "Bhubaneswar",
+    "aqi": 134,
+    "pm25": 60,
+    "pm10": 81,
+    "o3": 43,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bikaner": {
+    "city": "Bikaner",
+    "aqi": 239,
+    "pm25": 115,
+    "pm10": 155,
+    "o3": 49,
+    "no2": 65,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bilaspur": {
+    "city": "Bilaspur",
+    "aqi": 229,
+    "pm25": 93,
+    "pm10": 160,
+    "o3": 38,
+    "no2": 50,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bokaro": {
+    "city": "Bokaro",
+    "aqi": 278,
+    "pm25": 113,
+    "pm10": 174,
+    "o3": 36,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "byrnihat": {
+    "city": "Byrnihat",
+    "aqi": 279,
+    "pm25": 113,
+    "pm10": 185,
+    "o3": 49,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chandigarh": {
+    "city": "Chandigarh",
+    "aqi": 259,
+    "pm25": 118,
+    "pm10": 168,
+    "o3": 62,
+    "no2": 31,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chandrapur": {
+    "city": "Chandrapur",
+    "aqi": 197,
+    "pm25": 98,
+    "pm10": 129,
+    "o3": 54,
+    "no2": 30,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chennai": {
+    "city": "Chennai",
+    "aqi": 153,
+    "pm25": 72,
+    "pm10": 104,
+    "o3": 57,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "coimbatore": {
+    "city": "Coimbatore",
+    "aqi": 120,
+    "pm25": 51,
+    "pm10": 82,
+    "o3": 50,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "cuttack": {
+    "city": "Cuttack",
+    "aqi": 117,
+    "pm25": 56,
+    "pm10": 74,
+    "o3": 56,
+    "no2": 58,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "dehradun": {
+    "city": "Dehradun",
+    "aqi": 131,
+    "pm25": 61,
+    "pm10": 89,
+    "o3": 50,
+    "no2": 44,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "delhi": {
+    "city": "New Delhi",
+    "aqi": 415,
+    "pm25": 196,
+    "pm10": 258,
+    "o3": 37,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "dhanbad": {
+    "city": "Dhanbad",
+    "aqi": 159,
+    "pm25": 67,
+    "pm10": 100,
+    "o3": 62,
+    "no2": 35,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "dharuhera": {
+    "city": "Dharuhera",
+    "aqi": 91,
+    "pm25": 39,
+    "pm10": 58,
+    "o3": 70,
+    "no2": 58,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "durgapur": {
+    "city": "Durgapur",
+    "aqi": 87,
+    "pm25": 35,
+    "pm10": 58,
+    "o3": 70,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "faridabad": {
+    "city": "Faridabad",
+    "aqi": 198,
+    "pm25": 87,
+    "pm10": 131,
+    "o3": 44,
+    "no2": 31,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "firozabad": {
+    "city": "Firozabad",
+    "aqi": 96,
+    "pm25": 47,
+    "pm10": 58,
+    "o3": 33,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "gandhinagar": {
+    "city": "Gandhinagar",
+    "aqi": 89,
+    "pm25": 35,
+    "pm10": 55,
+    "o3": 59,
+    "no2": 38,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ghaziabad": {
+    "city": "Ghaziabad",
+    "aqi": 315,
+    "pm25": 143,
+    "pm10": 196,
+    "o3": 54,
+    "no2": 42,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "gorakhpur": {
+    "city": "Gorakhpur",
+    "aqi": 189,
+    "pm25": 82,
+    "pm10": 118,
+    "o3": 42,
+    "no2": 33,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "greater_noida": {
+    "city": "Greater Noida",
+    "aqi": 417,
+    "pm25": 193,
+    "pm10": 288,
+    "o3": 43,
+    "no2": 63,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "gurugram": {
+    "city": "Gurugram",
+    "aqi": 225,
+    "pm25": 109,
+    "pm10": 155,
+    "o3": 37,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "guwahati": {
+    "city": "Guwahati",
+    "aqi": 195,
+    "pm25": 84,
+    "pm10": 134,
+    "o3": 31,
+    "no2": 49,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "gwalior": {
+    "city": "Gwalior",
+    "aqi": 234,
+    "pm25": 109,
+    "pm10": 148,
+    "o3": 59,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "howrah": {
+    "city": "Howrah",
+    "aqi": 244,
+    "pm25": 118,
+    "pm10": 161,
+    "o3": 62,
+    "no2": 66,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "hubli": {
+    "city": "Hubli-Dharwad",
+    "aqi": 221,
+    "pm25": 95,
+    "pm10": 135,
+    "o3": 48,
+    "no2": 50,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "hyderabad": {
+    "city": "Hyderabad",
+    "aqi": 96,
+    "pm25": 46,
+    "pm10": 66,
+    "o3": 49,
+    "no2": 62,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "indore": {
+    "city": "Indore",
+    "aqi": 144,
+    "pm25": 67,
+    "pm10": 96,
+    "o3": 65,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jabalpur": {
+    "city": "Jabalpur",
+    "aqi": 243,
+    "pm25": 109,
+    "pm10": 160,
+    "o3": 30,
+    "no2": 55,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jaipur": {
+    "city": "Jaipur",
+    "aqi": 196,
+    "pm25": 78,
+    "pm10": 123,
+    "o3": 36,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jalandhar": {
+    "city": "Jalandhar",
+    "aqi": 112,
+    "pm25": 54,
+    "pm10": 77,
+    "o3": 31,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jammu": {
+    "city": "Jammu",
+    "aqi": 253,
+    "pm25": 123,
+    "pm10": 168,
+    "o3": 46,
+    "no2": 48,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jamshedpur": {
+    "city": "Jamshedpur",
+    "aqi": 93,
+    "pm25": 44,
+    "pm10": 64,
+    "o3": 70,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jharia": {
+    "city": "Jharia",
+    "aqi": 149,
+    "pm25": 67,
+    "pm10": 90,
+    "o3": 49,
+    "no2": 60,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jind": {
+    "city": "Jind",
+    "aqi": 93,
+    "pm25": 39,
+    "pm10": 62,
+    "o3": 49,
+    "no2": 44,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jodhpur": {
+    "city": "Jodhpur",
+    "aqi": 119,
+    "pm25": 51,
+    "pm10": 78,
+    "o3": 33,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kanpur": {
+    "city": "Kanpur",
+    "aqi": 322,
+    "pm25": 157,
+    "pm10": 194,
+    "o3": 63,
+    "no2": 62,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kalyan_dombivli": {
+    "city": "Kalyan-Dombivli",
+    "aqi": 238,
+    "pm25": 111,
+    "pm10": 153,
+    "o3": 37,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kochi": {
+    "city": "Kochi",
+    "aqi": 59,
+    "pm25": 26,
+    "pm10": 35,
+    "o3": 50,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kolhapur": {
+    "city": "Kolhapur",
+    "aqi": 199,
+    "pm25": 85,
+    "pm10": 137,
+    "o3": 55,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kolkata": {
+    "city": "Kolkata",
+    "aqi": 160,
+    "pm25": 67,
+    "pm10": 103,
+    "o3": 52,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kota": {
+    "city": "Kota",
+    "aqi": 160,
+    "pm25": 74,
+    "pm10": 106,
+    "o3": 70,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "lucknow": {
+    "city": "Lucknow",
+    "aqi": 418,
+    "pm25": 200,
+    "pm10": 290,
+    "o3": 49,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ludhiana": {
+    "city": "Ludhiana",
+    "aqi": 81,
+    "pm25": 40,
+    "pm10": 54,
+    "o3": 32,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "madurai": {
+    "city": "Madurai",
+    "aqi": 99,
+    "pm25": 42,
+    "pm10": 65,
+    "o3": 33,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "meerut": {
+    "city": "Meerut",
+    "aqi": 372,
+    "pm25": 163,
+    "pm10": 251,
+    "o3": 38,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "moradabad": {
+    "city": "Moradabad",
+    "aqi": 175,
+    "pm25": 70,
+    "pm10": 116,
+    "o3": 53,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mumbai": {
+    "city": "Mumbai",
+    "aqi": 131,
+    "pm25": 64,
+    "pm10": 84,
+    "o3": 35,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "muzaffarpur": {
+    "city": "Muzaffarpur",
+    "aqi": 212,
+    "pm25": 101,
+    "pm10": 129,
+    "o3": 68,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nagpur": {
+    "city": "Nagpur",
+    "aqi": 125,
+    "pm25": 51,
+    "pm10": 80,
+    "o3": 42,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nainital": {
+    "city": "Nainital",
+    "aqi": 180,
+    "pm25": 75,
+    "pm10": 121,
+    "o3": 48,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nanded": {
+    "city": "Nanded",
+    "aqi": 218,
+    "pm25": 102,
+    "pm10": 151,
+    "o3": 41,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nashik": {
+    "city": "Nashik",
+    "aqi": 128,
+    "pm25": 57,
+    "pm10": 82,
+    "o3": 31,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "navi_mumbai": {
+    "city": "Navi Mumbai",
+    "aqi": 130,
+    "pm25": 53,
+    "pm10": 84,
+    "o3": 54,
+    "no2": 52,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "noida": {
+    "city": "Noida",
+    "aqi": 316,
+    "pm25": 137,
+    "pm10": 200,
+    "o3": 53,
+    "no2": 36,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "panipat": {
+    "city": "Panipat",
+    "aqi": 269,
+    "pm25": 124,
+    "pm10": 180,
+    "o3": 68,
+    "no2": 60,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "patna": {
+    "city": "Patna",
+    "aqi": 310,
+    "pm25": 131,
+    "pm10": 190,
+    "o3": 49,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "pimpri_chinchwad": {
+    "city": "Pimpri-Chinchwad",
+    "aqi": 95,
+    "pm25": 46,
+    "pm10": 57,
+    "o3": 67,
+    "no2": 39,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "pune": {
+    "city": "Pune",
+    "aqi": 200,
+    "pm25": 93,
+    "pm10": 127,
+    "o3": 43,
+    "no2": 56,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "raipur": {
+    "city": "Raipur",
+    "aqi": 170,
+    "pm25": 79,
+    "pm10": 118,
+    "o3": 61,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "rajkot": {
+    "city": "Rajkot",
+    "aqi": 232,
+    "pm25": 105,
+    "pm10": 143,
+    "o3": 32,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ranchi": {
+    "city": "Ranchi",
+    "aqi": 160,
+    "pm25": 72,
+    "pm10": 109,
+    "o3": 36,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "rourkela": {
+    "city": "Rourkela",
+    "aqi": 225,
+    "pm25": 106,
+    "pm10": 142,
+    "o3": 64,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "salem": {
+    "city": "Salem",
+    "aqi": 173,
+    "pm25": 74,
+    "pm10": 110,
+    "o3": 41,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "solapur": {
+    "city": "Solapur",
+    "aqi": 251,
+    "pm25": 112,
+    "pm10": 166,
+    "o3": 59,
+    "no2": 62,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "srinagar": {
+    "city": "Srinagar",
+    "aqi": 193,
+    "pm25": 94,
+    "pm10": 116,
+    "o3": 48,
+    "no2": 55,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "surat": {
+    "city": "Surat",
+    "aqi": 178,
+    "pm25": 71,
+    "pm10": 120,
+    "o3": 45,
+    "no2": 56,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "thane": {
+    "city": "Thane",
+    "aqi": 250,
+    "pm25": 111,
+    "pm10": 166,
+    "o3": 63,
+    "no2": 37,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "vadodara": {
+    "city": "Vadodara",
+    "aqi": 171,
+    "pm25": 77,
+    "pm10": 112,
+    "o3": 56,
+    "no2": 53,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "varanasi": {
+    "city": "Varanasi",
+    "aqi": 206,
+    "pm25": 95,
+    "pm10": 125,
+    "o3": 55,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "vasai_virar": {
+    "city": "Vasai-Virar",
+    "aqi": 210,
+    "pm25": 95,
+    "pm10": 145,
+    "o3": 64,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "vijayawada": {
+    "city": "Vijayawada",
+    "aqi": 236,
+    "pm25": 114,
+    "pm10": 159,
+    "o3": 57,
+    "no2": 55,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "visakhapatnam": {
+    "city": "Visakhapatnam",
+    "aqi": 168,
+    "pm25": 72,
+    "pm10": 112,
+    "o3": 39,
+    "no2": 65,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "yamuna_nagar": {
+    "city": "Yamuna Nagar",
+    "aqi": 128,
+    "pm25": 63,
+    "pm10": 89,
+    "o3": 45,
+    "no2": 53,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "zirakpur": {
+    "city": "Zirakpur",
+    "aqi": 128,
+    "pm25": 61,
+    "pm10": 79,
+    "o3": 65,
+    "no2": 54,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "adarshnagar": {
+    "city": "Adarsh Nagar",
+    "aqi": 178,
+    "pm25": 88,
+    "pm10": 110,
+    "o3": 62,
+    "no2": 54,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "alipurduar": {
+    "city": "Alipurduar",
+    "aqi": 250,
+    "pm25": 119,
+    "pm10": 150,
+    "o3": 66,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "amravati": {
+    "city": "Amravati",
+    "aqi": 174,
+    "pm25": 77,
+    "pm10": 120,
+    "o3": 46,
+    "no2": 33,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "anantapur": {
+    "city": "Anantapur",
+    "aqi": 118,
+    "pm25": 50,
+    "pm10": 72,
+    "o3": 52,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "anpara": {
+    "city": "Anpara",
+    "aqi": 116,
+    "pm25": 51,
+    "pm10": 69,
+    "o3": 37,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "arrah": {
+    "city": "Arrah",
+    "aqi": 263,
+    "pm25": 125,
+    "pm10": 159,
+    "o3": 39,
+    "no2": 52,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "asansol": {
+    "city": "Asansol",
+    "aqi": 146,
+    "pm25": 64,
+    "pm10": 88,
+    "o3": 59,
+    "no2": 67,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "baddi": {
+    "city": "Baddi",
+    "aqi": 107,
+    "pm25": 45,
+    "pm10": 68,
+    "o3": 56,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "balrampur": {
+    "city": "Balrampur",
+    "aqi": 260,
+    "pm25": 127,
+    "pm10": 165,
+    "o3": 55,
+    "no2": 50,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bankura": {
+    "city": "Bankura",
+    "aqi": 216,
+    "pm25": 102,
+    "pm10": 142,
+    "o3": 68,
+    "no2": 46,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "baripada": {
+    "city": "Baripada",
+    "aqi": 130,
+    "pm25": 55,
+    "pm10": 80,
+    "o3": 49,
+    "no2": 35,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "barmer": {
+    "city": "Barmer",
+    "aqi": 159,
+    "pm25": 67,
+    "pm10": 105,
+    "o3": 39,
+    "no2": 67,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhatinda": {
+    "city": "Bhatinda",
+    "aqi": 178,
+    "pm25": 79,
+    "pm10": 119,
+    "o3": 39,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "bhiwani": {
+    "city": "Bhiwani",
+    "aqi": 114,
+    "pm25": 55,
+    "pm10": 78,
+    "o3": 51,
+    "no2": 55,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chidambaram": {
+    "city": "Chidambaram",
+    "aqi": 83,
+    "pm25": 35,
+    "pm10": 57,
+    "o3": 62,
+    "no2": 58,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chilakaluripet": {
+    "city": "Chilakaluripet",
+    "aqi": 139,
+    "pm25": 62,
+    "pm10": 83,
+    "o3": 49,
+    "no2": 66,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "chitradurga": {
+    "city": "Chitradurga",
+    "aqi": 171,
+    "pm25": 79,
+    "pm10": 108,
+    "o3": 36,
+    "no2": 66,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "churu": {
+    "city": "Churu",
+    "aqi": 275,
+    "pm25": 111,
+    "pm10": 175,
+    "o3": 54,
+    "no2": 44,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "damoh": {
+    "city": "Damoh",
+    "aqi": 125,
+    "pm25": 56,
+    "pm10": 75,
+    "o3": 60,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "darbhanga": {
+    "city": "Darbhanga",
+    "aqi": 274,
+    "pm25": 135,
+    "pm10": 182,
+    "o3": 56,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "davangere": {
+    "city": "Davangere",
+    "aqi": 136,
+    "pm25": 56,
+    "pm10": 87,
+    "o3": 54,
+    "no2": 44,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "dharwad": {
+    "city": "Dharwad",
+    "aqi": 183,
+    "pm25": 75,
+    "pm10": 110,
+    "o3": 69,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "dindigul": {
+    "city": "Dindigul",
+    "aqi": 255,
+    "pm25": 119,
+    "pm10": 166,
+    "o3": 63,
+    "no2": 66,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "erode": {
+    "city": "Erode",
+    "aqi": 228,
+    "pm25": 91,
+    "pm10": 143,
+    "o3": 38,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ettumanur": {
+    "city": "Ettumanur",
+    "aqi": 145,
+    "pm25": 59,
+    "pm10": 93,
+    "o3": 60,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "gaya": {
+    "city": "Gaya",
+    "aqi": 202,
+    "pm25": 95,
+    "pm10": 140,
+    "o3": 54,
+    "no2": 42,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "goa": {
+    "city": "Goa",
+    "aqi": 137,
+    "pm25": 59,
+    "pm10": 93,
+    "o3": 63,
+    "no2": 42,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "guntur": {
+    "city": "Guntur",
+    "aqi": 102,
+    "pm25": 44,
+    "pm10": 66,
+    "o3": 36,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "haldia": {
+    "city": "Haldia",
+    "aqi": 237,
+    "pm25": 109,
+    "pm10": 165,
+    "o3": 41,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "himmatnagar": {
+    "city": "Himmatnagar",
+    "aqi": 220,
+    "pm25": 91,
+    "pm10": 150,
+    "o3": 57,
+    "no2": 41,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "hoshangabad": {
+    "city": "Hoshangabad",
+    "aqi": 216,
+    "pm25": 93,
+    "pm10": 147,
+    "o3": 60,
+    "no2": 50,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jagraon": {
+    "city": "Jagraon",
+    "aqi": 279,
+    "pm25": 114,
+    "pm10": 194,
+    "o3": 54,
+    "no2": 35,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jalgaon": {
+    "city": "Jalgaon",
+    "aqi": 233,
+    "pm25": 95,
+    "pm10": 155,
+    "o3": 59,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jammutawi": {
+    "city": "Jammu Tawi",
+    "aqi": 124,
+    "pm25": 54,
+    "pm10": 79,
+    "o3": 40,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "jhansi": {
+    "city": "Jhansi",
+    "aqi": 244,
+    "pm25": 118,
+    "pm10": 149,
+    "o3": 30,
+    "no2": 62,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kalaburagi": {
+    "city": "Kalaburagi",
+    "aqi": 276,
+    "pm25": 134,
+    "pm10": 183,
+    "o3": 69,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kakinada": {
+    "city": "Kakinada",
+    "aqi": 155,
+    "pm25": 74,
+    "pm10": 96,
+    "o3": 62,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "karnal": {
+    "city": "Karnal",
+    "aqi": 224,
+    "pm25": 96,
+    "pm10": 147,
+    "o3": 67,
+    "no2": 38,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "karur": {
+    "city": "Karur",
+    "aqi": 146,
+    "pm25": 62,
+    "pm10": 90,
+    "o3": 41,
+    "no2": 64,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kashipur": {
+    "city": "Kashipur",
+    "aqi": 259,
+    "pm25": 122,
+    "pm10": 160,
+    "o3": 57,
+    "no2": 66,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "khanna": {
+    "city": "Khanna",
+    "aqi": 264,
+    "pm25": 118,
+    "pm10": 169,
+    "o3": 50,
+    "no2": 51,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kholvad": {
+    "city": "Kholvad",
+    "aqi": 175,
+    "pm25": 85,
+    "pm10": 117,
+    "o3": 57,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kozhikode": {
+    "city": "Kozhikode",
+    "aqi": 130,
+    "pm25": 54,
+    "pm10": 84,
+    "o3": 36,
+    "no2": 48,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "kurnool": {
+    "city": "Kurnool",
+    "aqi": 162,
+    "pm25": 67,
+    "pm10": 100,
+    "o3": 70,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "latur": {
+    "city": "Latur",
+    "aqi": 81,
+    "pm25": 35,
+    "pm10": 48,
+    "o3": 33,
+    "no2": 49,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "madikeri": {
+    "city": "Madikeri",
+    "aqi": 204,
+    "pm25": 90,
+    "pm10": 131,
+    "o3": 64,
+    "no2": 58,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mangalore": {
+    "city": "Mangalore",
+    "aqi": 139,
+    "pm25": 57,
+    "pm10": 95,
+    "o3": 45,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mathura": {
+    "city": "Mathura",
+    "aqi": 267,
+    "pm25": 108,
+    "pm10": 161,
+    "o3": 31,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mehsana": {
+    "city": "Mehsana",
+    "aqi": 81,
+    "pm25": 33,
+    "pm10": 49,
+    "o3": 38,
+    "no2": 67,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mirzapur": {
+    "city": "Mirzapur",
+    "aqi": 98,
+    "pm25": 44,
+    "pm10": 68,
+    "o3": 62,
+    "no2": 42,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mudhol": {
+    "city": "Mudhol",
+    "aqi": 158,
+    "pm25": 67,
+    "pm10": 98,
+    "o3": 60,
+    "no2": 52,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "mysore": {
+    "city": "Mysore",
+    "aqi": 223,
+    "pm25": 92,
+    "pm10": 144,
+    "o3": 42,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nagaon": {
+    "city": "Nagaon",
+    "aqi": 233,
+    "pm25": 95,
+    "pm10": 157,
+    "o3": 58,
+    "no2": 45,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nalagarh": {
+    "city": "Nalagarh",
+    "aqi": 220,
+    "pm25": 99,
+    "pm10": 149,
+    "o3": 55,
+    "no2": 32,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "nellore": {
+    "city": "Nellore",
+    "aqi": 164,
+    "pm25": 66,
+    "pm10": 112,
+    "o3": 36,
+    "no2": 61,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ooty": {
+    "city": "Ooty",
+    "aqi": 45,
+    "pm25": 20,
+    "pm10": 30,
+    "o3": 43,
+    "no2": 65,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "palanpur": {
+    "city": "Palanpur",
+    "aqi": 118,
+    "pm25": 50,
+    "pm10": 74,
+    "o3": 34,
+    "no2": 38,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "pali": {
+    "city": "Pali",
+    "aqi": 221,
+    "pm25": 98,
+    "pm10": 148,
+    "o3": 70,
+    "no2": 68,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "panaji": {
+    "city": "Panaji",
+    "aqi": 131,
+    "pm25": 59,
+    "pm10": 84,
+    "o3": 48,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "pithampur": {
+    "city": "Pithampur",
+    "aqi": 164,
+    "pm25": 72,
+    "pm10": 106,
+    "o3": 68,
+    "no2": 60,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "pondicherry": {
+    "city": "Puducherry",
+    "aqi": 152,
+    "pm25": 61,
+    "pm10": 106,
+    "o3": 54,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "port_blair": {
+    "city": "Port Blair",
+    "aqi": 44,
+    "pm25": 19,
+    "pm10": 28,
+    "o3": 38,
+    "no2": 51,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "raichur": {
+    "city": "Raichur",
+    "aqi": 93,
+    "pm25": 39,
+    "pm10": 59,
+    "o3": 60,
+    "no2": 40,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "rishikesh": {
+    "city": "Rishikesh",
+    "aqi": 176,
+    "pm25": 84,
+    "pm10": 120,
+    "o3": 36,
+    "no2": 54,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "rohtak": {
+    "city": "Rohtak",
+    "aqi": 89,
+    "pm25": 42,
+    "pm10": 55,
+    "o3": 34,
+    "no2": 30,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "samastipur": {
+    "city": "Samastipur",
+    "aqi": 125,
+    "pm25": 52,
+    "pm10": 85,
+    "o3": 69,
+    "no2": 36,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "sambalpur": {
+    "city": "Sambalpur",
+    "aqi": 219,
+    "pm25": 88,
+    "pm10": 151,
+    "o3": 43,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "shimla": {
+    "city": "Shimla",
+    "aqi": 48,
+    "pm25": 21,
+    "pm10": 29,
+    "o3": 31,
+    "no2": 30,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "sonbhadra": {
+    "city": "Sonbhadra",
+    "aqi": 82,
+    "pm25": 34,
+    "pm10": 51,
+    "o3": 51,
+    "no2": 53,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "sunder_nagar": {
+    "city": "Sunder Nagar",
+    "aqi": 260,
+    "pm25": 117,
+    "pm10": 176,
+    "o3": 49,
+    "no2": 56,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "tiruchirappalli": {
+    "city": "Tiruchirappalli",
+    "aqi": 131,
+    "pm25": 55,
+    "pm10": 83,
+    "o3": 61,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "trivandrum": {
+    "city": "Thiruvananthapuram",
+    "aqi": 156,
+    "pm25": 75,
+    "pm10": 107,
+    "o3": 54,
+    "no2": 48,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "udaipur": {
+    "city": "Udaipur",
+    "aqi": 119,
+    "pm25": 52,
+    "pm10": 83,
+    "o3": 61,
+    "no2": 60,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "ujjain": {
+    "city": "Ujjain",
+    "aqi": 130,
+    "pm25": 61,
+    "pm10": 87,
+    "o3": 42,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "unau": {
+    "city": "Unnao",
+    "aqi": 178,
+    "pm25": 82,
+    "pm10": 113,
+    "o3": 53,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "vapi": {
+    "city": "Vapi",
+    "aqi": 98,
+    "pm25": 44,
+    "pm10": 59,
+    "o3": 37,
+    "no2": 31,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "vellore": {
+    "city": "Vellore",
+    "aqi": 139,
+    "pm25": 57,
+    "pm10": 93,
+    "o3": 50,
+    "no2": 38,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "warangal": {
+    "city": "Warangal",
+    "aqi": 100,
+    "pm25": 46,
+    "pm10": 61,
+    "o3": 59,
+    "no2": 31,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a1": {
+    "city": "City A1",
+    "aqi": 153,
+    "pm25": 69,
+    "pm10": 102,
+    "o3": 52,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a2": {
+    "city": "City A2",
+    "aqi": 143,
+    "pm25": 66,
+    "pm10": 86,
+    "o3": 54,
+    "no2": 37,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a3": {
+    "city": "City A3",
+    "aqi": 256,
+    "pm25": 126,
+    "pm10": 167,
+    "o3": 49,
+    "no2": 34,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a4": {
+    "city": "City A4",
+    "aqi": 208,
+    "pm25": 85,
+    "pm10": 129,
+    "o3": 34,
+    "no2": 43,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a5": {
+    "city": "City A5",
+    "aqi": 162,
+    "pm25": 78,
+    "pm10": 99,
+    "o3": 33,
+    "no2": 51,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a6": {
+    "city": "City A6",
+    "aqi": 264,
+    "pm25": 131,
+    "pm10": 175,
+    "o3": 33,
+    "no2": 59,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a7": {
+    "city": "City A7",
+    "aqi": 166,
+    "pm25": 74,
+    "pm10": 105,
+    "o3": 52,
+    "no2": 65,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a8": {
+    "city": "City A8",
+    "aqi": 191,
+    "pm25": 93,
+    "pm10": 130,
+    "o3": 42,
+    "no2": 63,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a9": {
+    "city": "City A9",
+    "aqi": 126,
+    "pm25": 56,
+    "pm10": 78,
+    "o3": 67,
+    "no2": 57,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_a10": {
+    "city": "City A10",
+    "aqi": 205,
+    "pm25": 88,
+    "pm10": 134,
+    "o3": 31,
+    "no2": 70,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_z9": {
+    "city": "City Z9",
+    "aqi": 266,
+    "pm25": 128,
+    "pm10": 185,
+    "o3": 69,
+    "no2": 30,
+    "last_updated": "2025-11-21 15:20:52"
+  },
+  "city_z10": {
+    "city": "City Z10",
+    "aqi": 131,
+    "pm25": 60,
+    "pm10": 81,
+    "o3": 64,
+    "no2": 47,
+    "last_updated": "2025-11-21 15:20:52"
+  }
+}
