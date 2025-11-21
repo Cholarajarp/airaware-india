@@ -4,852 +4,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#22C55E">
-    <title id="app-title">AirAware India - Live Air Quality Monitor</title>
-    <meta name="description" content="Monitor real-time Air Quality Index (AQI) across major Indian cities. Get safe time recommendations, share alerts, and stay informed about air pollution levels." />
-    <!-- PWA -->
-    <link rel="manifest" href="/manifest.json">
-    
+    <title>AirAware India - Live Air Quality</title>
     <style>
-        /* Base Dark Theme Variables */
         :root {
             --bg-dark: #0F172A; --bg-card: #1E293B; --bg-hover: #334155;
             --text-primary: #F1F5F9; --text-secondary: #94A3B8;
             --accent: #06B6D4; --accent-hover: #0891B2; --border: #334155;
-            /* AQI Colors (High Contrast) */
             --aqi-good: #22C55E; --aqi-moderate: #FBBF24; --aqi-unhealthy: #F97316;
             --aqi-vunhealthy: #EF4444; --aqi-hazardous: #991B1B;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-dark); color: var(--text-primary); line-height: 1.6;
-            min-height: 100vh; padding-bottom: 50px;
-        }
-
-        /* Container & Layout */
-        .container {
-            max-width: 1200px; margin: 0 auto; padding: 20px; 
-            display: grid; grid-template-columns: 1fr; gap: 25px;
-            /* Added min-height to help prevent aesthetic stretching on mobile */
-            min-height: 80vh; 
-        }
-        .card {
-            background: var(--bg-card); border-radius: 12px; padding: 24px;
-            border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        .flex-row { display: flex; align-items: center; }
-        .flex-col { display: flex; flex-direction: column; }
-        header { justify-content: space-between; padding: 15px 0; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
-        .brand { gap: 12px; }
-        .brand-icon { font-size: 28px; color: var(--accent); }
-        .brand-text h1 { font-size: 20px; font-weight: 700; }
-        .brand-text p { font-size: 13px; color: var(--text-secondary); }
-
-        /* Inputs and Buttons (Optimized) */
-        input, textarea {
-            width: 100%; padding: 12px 16px; background: var(--bg-dark); border: 1px solid var(--border);
-            border-radius: 8px; color: var(--text-primary); font-size: 15px; font-family: inherit; transition: all 0.2s;
-        }
-        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
-
-        .btn {
-            padding: 10px 18px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
-            transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .btn-primary { background: var(--accent); color: white; }
-        .btn-primary:hover { background: var(--accent-hover); }
-        .btn-outline { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
-        .btn-outline:hover { background: var(--bg-hover); color: var(--text-primary); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        /* City Selector (Searchable Input Fix) */
-        .city-select-group { 
-            display: grid; grid-template-columns: 3fr 1fr; gap: 15px; margin-bottom: 20px;
-            position: relative;
-        }
-        .search-container {
-            position: relative;
-        }
-        #citySearchInput {
-            border-radius: 8px;
-            padding-right: 40px; /* Space for icon */
-        }
-        .search-icon {
-            position: absolute; right: 15px; top: 13px; color: var(--text-secondary);
-        }
-        #cityDropdown {
-            position: absolute;
-            z-index: 100;
-            width: 100%;
-            max-height: 200px;
-            overflow-y: auto;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 0 0 8px 8px;
-            border-top: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            display: none;
-        }
-        .dropdown-item {
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.1s;
-        }
-        .dropdown-item:hover {
-            background: var(--bg-hover);
-        }
+        body { background: var(--bg-dark); color: var(--text-primary); font-family: sans-serif; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; }
+        .card { background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
         
-        /* AQI Hero Display */
-        #aqiDisplay { display: none; }
-        #aqiDisplay.show { display: block; animation: fadeIn 0.5s ease-out; }
-
-        .aqi-hero {
-            padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 20px;
-            border-left: 5px solid; transition: background 0.5s, border-color 0.5s;
+        /* Search & Dropdown */
+        .search-container { position: relative; margin-bottom: 15px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; background: var(--bg-dark); border: 1px solid var(--border); color: white; }
+        #cityDropdown { 
+            position: absolute; width: 100%; max-height: 200px; overflow-y: auto; 
+            background: var(--bg-dark); border: 1px solid var(--border); 
+            display: none; z-index: 10; 
         }
+        .dropdown-item { padding: 10px; cursor: pointer; border-bottom: 1px solid var(--border); }
+        .dropdown-item:hover { background: var(--bg-hover); }
 
-        .aqi-value-large { font-size: 72px; font-weight: 800; line-height: 1; margin: 10px 0; transition: color 0.5s; }
-        .aqi-label-large { font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: color 0.5s; }
-        .aqi-metadata { font-size: 12px; color: var(--text-secondary); margin-top: 15px; }
-
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
-        .stat-card { padding: 15px; border-radius: 8px; background: var(--bg-dark); border: 1px solid var(--border); text-align: center; }
-        .stat-label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 5px; }
-        .stat-value { font-size: 28px; font-weight: 700; color: var(--accent); }
-        .stat-unit { font-size: 11px; color: var(--text-secondary); }
-
-        /* Alert Box */
-        .alert-box {
-            padding: 15px; border-radius: 8px; border: 1px solid; display: flex; gap: 15px;
-            margin-bottom: 20px; align-items: center;
-        }
-        .alert-icon { font-size: 24px; flex-shrink: 0; }
-        .alert-content h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-        .alert-content p { font-size: 14px; color: var(--text-secondary); }
-
-        /* Specific Alert Styles (uses AQI colors) */
-        .alert-good { border-color: var(--aqi-good); background: rgba(34, 197, 94, 0.1); color: var(--aqi-good); }
-        .alert-moderate { border-color: var(--aqi-moderate); background: rgba(251, 191, 36, 0.1); color: var(--aqi-moderate); }
-        .alert-unhealthy, .alert-vunhealthy { border-color: var(--aqi-unhealthy); background: rgba(249, 115, 22, 0.1); color: var(--aqi-unhealthy); }
-        .alert-hazardous { border-color: var(--aqi-hazardous); background: rgba(153, 27, 27, 0.1); color: var(--aqi-hazardous); }
-
-        /* Actions */
-        .action-bar { display: flex; gap: 15px; margin-bottom: 20px; }
-
-        /* Forecast */
-        .forecast-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px; margin-top: 15px;
-        }
-        .forecast-item {
-            padding: 10px 5px; border-radius: 6px; background: var(--bg-dark);
-            border: 1px solid var(--border); text-align: center;
-        }
-        .forecast-hour { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
-        .forecast-aqi { font-size: 18px; font-weight: 700; }
+        /* Buttons */
+        .btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; width: 100%; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
         /* Heatmap Grid */
-        .heatmap-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px; margin-top: 15px;
-        }
-        .heatmap-city {
-            padding: 15px; border-radius: 8px; cursor: pointer; text-align: center;
-            transition: all 0.2s; color: white;
-        }
-        .heatmap-city:hover { opacity: 0.8; transform: translateY(-2px); }
-        .heatmap-name { font-size: 14px; font-weight: 600; }
-        .heatmap-aqi { font-size: 24px; font-weight: 800; }
+        .heatmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 10px; }
+        .heatmap-city { padding: 15px; border-radius: 8px; text-align: center; cursor: pointer; color: #000; font-weight: bold; }
+        
+        /* AQI Display */
+        #aqiDisplay { display: none; margin-top: 20px; text-align: center; }
+        .aqi-val { font-size: 60px; font-weight: 800; }
+        .forecast-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-top: 15px; }
+        .forecast-item { min-width: 60px; background: var(--bg-dark); padding: 10px; border-radius: 6px; text-align: center; border: 1px solid var(--border); }
 
-        /* Modal */
-        .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); z-index: 1000;
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal.show { display: flex; }
-        .modal-content {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-            padding: 32px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;
-        }
-        .modal-header { justify-content: space-between; margin-bottom: 24px; }
-        .modal-title { font-size: 20px; font-weight: 700; }
-        .close-btn { width: 32px; height: 32px; border: none; background: var(--bg-dark);
-            border-radius: 6px; color: var(--text-secondary); cursor: pointer; display: flex;
-            align-items: center; justify-content: center; font-size: 20px; }
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-
-        /* Responsive adjustments */
-        @media (min-width: 768px) {
-            .container { grid-template-columns: 2fr 1fr; gap: 30px; }
-            .aqi-main-panel { grid-column: 1 / 2; }
-            .aqi-side-panel { grid-column: 2 / 3; }
-        }
-        @media (max-width: 767px) {
-            .city-select-group { grid-template-columns: 1fr; }
-            .action-bar button { flex-grow: 1; }
-            .stats-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255, 255, 255, 0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (min-width: 768px) { .container { grid-template-columns: 2fr 1fr; } }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <!-- Header -->
-        <header class="flex-row">
-            <div class="brand flex-row">
-                <div class="brand-icon">🌬️</div>
-                <div class="brand-text">
-                    <h1 id="header-title">AirAware India</h1>
-                    <p id="app-subtitle">Free Air Safety Monitor</p>
-                </div>
-            </div>
-            <button class="btn btn-outline" id="langToggle" aria-label="Change Language">
-                <span id="lang-text">🌐 हिंदी</span>
-            </button>
-        </header>
-
-        <!-- Main Content Panel -->
-        <div class="aqi-main-panel">
+        <div class="main-panel">
             <div class="card">
-                <h2 class="form-label" id="select-city-label">1. Search City to Check</h2>
-                <div class="city-select-group">
+                <h2>🔍 Search City</h2>
+                <div class="search-container">
+                    <input type="text" id="citySearchInput" placeholder="Type city (e.g., Delhi, Mumbai...)">
+                    <div id="cityDropdown"></div>
+                    <input type="hidden" id="citySelect">
+                </div>
+                <button class="btn btn-primary" id="checkAqiBtn" disabled>Check AQI</button>
+
+                <div id="aqiDisplay">
+                    <h2 id="displayCityName">---</h2>
+                    <div class="aqi-val" id="displayAqiVal">--</div>
+                    <p id="displayStatus">Loading...</p>
                     
-                    <!-- Search Input and Dropdown Container -->
-                    <div class="search-container">
-                        <input type="text" id="citySearchInput" placeholder="Type city name (e.g., Delhi, Pune...)" aria-label="Search city name for AQI check">
-                        <span class="search-icon">🔍</span>
-                        <div id="cityDropdown">
-                            <!-- Search results injected here -->
-                        </div>
-                        <!-- Hidden input to store selected city ID -->
-                        <input type="hidden" id="citySelect" value=""> 
-                    </div>
-
-                    <button class="btn btn-primary" id="checkAqiBtn" disabled>
-                        <span id="check-btn-text">Check AQI</span>
-                    </button>
-                </div>
-
-                <!-- AQI Display -->
-                <div id="aqiDisplay" class="flex-col">
-                    <div class="aqi-hero flex-col" id="aqiHero">
-                        <span class="aqi-metadata" id="cityName">---</span>
-                        <div class="aqi-value-large" id="aqiValue">--</div>
-                        <div class="aqi-label-large" id="aqiLabel">Loading...</div>
-                        <span class="aqi-metadata" id="lastUpdated">---</span>
-                    </div>
-
-                    <!-- Safe Time Alert -->
-                    <div class="alert-box" id="safeTimeAlert">
-                        <div class="alert-icon" id="safeTimeIcon">⏰</div>
-                        <div class="alert-content flex-col">
-                            <h3 id="safeTimeTitle">Safe Time Recommendation</h3>
-                            <p id="safeTimeText">Calculating best time for outdoor activities...</p>
-                        </div>
-                    </div>
-
-                    <!-- Pollutant Stats -->
-                    <div class="stats-grid" id="statsGrid">
-                        <div class="stat-card">
-                            <div class="stat-label">PM 2.5</div>
-                            <div class="stat-value" id="pm25Value">--</div>
-                            <div class="stat-unit">µg/m³</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">PM 10</div>
-                            <div class="stat-value" id="pm10Value">--</div>
-                            <div class="stat-unit">µg/m³</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">O₃</div>
-                            <div class="stat-value" id="o3Value">--</div>
-                            <div class="stat-unit">µg/m³</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-label">NO₂</div>
-                            <div class="stat-value" id="no2Value">--</div>
-                            <div class="stat-unit">µg/m³</div>
-                        </div>
-                    </div>
-
-                    <!-- Action Bar -->
-                    <div class="action-bar">
-                        <button class="btn btn-primary" id="shareBtn">
-                            <span>📱</span>
-                            <span id="share-btn-text">Share Alert</span>
-                        </button>
-                        <button class="btn btn-outline" id="reportBtn">
-                            <span>📝</span>
-                            <span id="report-btn-text">Report Issue</span>
-                        </button>
-                    </div>
-
-                    <!-- Forecast Section -->
-                    <h3 class="form-label" id="forecast-title" style="margin-top: 20px;">24-Hour Forecast</h3>
-                    <div class="forecast-grid" id="forecastGrid">
-                        <!-- Forecast items generated here -->
-                    </div>
+                    <h3>24H Forecast</h3>
+                    <div class="forecast-grid" id="forecastGrid"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar/Heatmap Panel -->
-        <div class="aqi-side-panel">
+        <div class="side-panel">
             <div class="card">
-                <h2 class="form-label" id="heatmap-title">Top 15 City Status</h2>
-                <div class="heatmap-grid" id="heatmapGrid">
-                    <!-- Heatmap items generated here -->
-                </div>
+                <h2>🇮🇳 Top 15 City Status</h2>
+                <div class="heatmap-grid" id="heatmapGrid"></div>
             </div>
-            
-            <!-- Subscription Card -->
-            <div class="card" style="margin-top: 25px;">
-                <h2 class="form-label" id="subscribe-title">Get Daily Alerts</h2>
-                <form id="subscribeForm">
-                    <div class="form-group">
-                        <input type="text" id="subName" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="subPhone" placeholder="WhatsApp Number (+91...)" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span id="subscribe-btn-text">Subscribe Now</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Report Modal -->
-    <div class="modal" id="reportModal">
-        <div class="modal-content">
-            <header class="modal-header flex-row">
-                <h2 class="modal-title" id="modal-title">Report Air Quality Issue</h2>
-                <button class="close-btn" id="closeModalBtn" aria-label="Close modal">×</button>
-            </header>
-            <form id="reportForm">
-                <div class="form-group">
-                    <label class="form-label" for="reportCity" id="form-city-label">City</label>
-                    <input type="text" id="reportCity" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="reportLocation" id="form-location-label">Location</label>
-                    <input type="text" id="reportLocation" placeholder="e.g., Near India Gate" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="reportMessage" id="form-message-label">Describe the issue</label>
-                    <textarea id="reportMessage" placeholder="What air quality issue did you observe?" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <span id="submit-report-text">Submit Report</span>
-                </button>
-            </form>
         </div>
     </div>
 
     <script>
-        // --- CONSTANTS AND STATE ---
-        const translations = {
-            en: {
-                'header-title': 'AirAware India', 'app-subtitle': 'Free Air Safety Monitor',
-                'select-city-label': '1. Search City to Check', 'check-btn-text': 'Check AQI',
-                'share-btn-text': 'Share Alert', 'report-btn-text': 'Report Issue',
-                'forecast-title': '24-Hour Forecast', 'heatmap-title': 'Top 15 City Status',
-                'subscribe-title': 'Get Daily Alerts', 'subscribe-btn-text': 'Subscribe Now',
-                'safeTimeTitle': 'Safe Time Recommendation',
-                'modal-title': 'Report Air Quality Issue', 'form-city-label': 'City',
-                'form-location-label': 'Location', 'form-message-label': 'Describe the issue',
-                'submit-report-text': 'Submit Report', 'loading': 'Loading...',
-                'good': 'Good', 'moderate': 'Moderate', 'unhealthy': 'Unhealthy',
-                'very-unhealthy': 'Very Unhealthy', 'hazardous': 'Hazardous',
-                'safe-now': 'Safe to go outside now. Enjoy!', 'safe-evening': 'Air is poor. Best time: After 6 PM',
-                'safe-late': 'Air is very unhealthy. Avoid outdoor activity; best after 8 PM',
-                'stay-indoors': 'Air quality is Hazardous. Stay indoors all day',
-                'last-updated-text': 'Last updated:'
-            },
-            hi: {
-                'header-title': 'वायुमित्र भारत', 'app-subtitle': 'मुफ़्त वायु सुरक्षा मॉनिटर',
-                'select-city-label': '1. जाँच के लिए शहर खोजें', 'check-btn-text': 'AQI जांचें',
-                'share-btn-text': 'चेतावनी शेयर करें', 'report-btn-text': 'समस्या रिपोर्ट करें',
-                'forecast-title': '24 घंटे का पूर्वानुमान', 'heatmap-title': 'शीर्ष 15 शहर स्थिति',
-                'subscribe-title': 'दैनिक अलर्ट पाएं', 'subscribe-btn-text': 'अभी सदस्यता लें',
-                'safeTimeTitle': 'सुरक्षित समय की सलाह',
-                'modal-title': 'वायु गुणवत्ता समस्या रिपोर्ट करें', 'form-city-label': 'शहर',
-                'form-location-label': 'स्थान', 'form-message-label': 'समस्या का वर्णन करें',
-                'submit-report-text': 'रिपोर्ट जमा करें', 'loading': 'लोड हो रहा है...',
-                'good': 'अच्छा', 'moderate': 'मध्यम', 'unhealthy': 'अस्वास्थ्यकर',
-                'very-unhealthy': 'बहुत अस्वास्थ्यकर', 'hazardous': 'खतरनाक',
-                'safe-now': 'अभी बाहर जाना सुरक्षित है। आनंद लें!', 'safe-evening': 'हवा खराब है। सबसे अच्छा समय: शाम 6 बजे के बाद',
-                'safe-late': 'हवा बहुत अस्वस्थकर है। बाहर जाने से बचें; सबसे अच्छा रात 8 बजे के बाद',
-                'stay-indoors': 'वायु गुणवत्ता खतरनाक है। पूरे दिन घर के अंदर रहें',
-                'last-updated-text': 'अंतिम अपडेट:'
-            }
-        };
+        // --- CONFIG & STATE ---
         const AQI_COLORS = {
-            'good': 'var(--aqi-good)', 'moderate': 'var(--aqi-moderate)',
-            'unhealthy': 'var(--aqi-unhealthy)', 'very-unhealthy': 'var(--aqi-vunhealthy)',
-            'hazardous': 'var(--aqi-hazardous)'
+            'good': '#22C55E', 'moderate': '#FBBF24', 'unhealthy': '#F97316', 
+            'very-unhealthy': '#EF4444', 'hazardous': '#991B1B'
         };
-
-        let currentLang = 'en';
-        let currentCityID = null;
-        let currentCityName = null;
-        let citiesData = []; // Holds all 200+ cities
-
-        // --- CORE FUNCTIONS ---
+        let citiesData = [];
 
         document.addEventListener('DOMContentLoaded', () => {
             loadCities();
-            setupEventListeners();
-            updateUILanguage();
-            registerServiceWorker();
+            setupEvents();
         });
-        
-        function registerServiceWorker() {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js', { scope: '/' })
-                    .then(reg => console.log('SW Registered'))
-                    .catch(err => console.error('SW Registration Failed:', err));
-            }
-        }
 
         async function loadCities() {
-            try {
-                const response = await fetch('/api/cities');
-                citiesData = await response.json(); // Load ALL 200+ cities
-                
-                // Init: Put first 10 cities into the dropdown to show suggestions immediately
-                renderCityDropdown(citiesData.slice(0, 10)); 
-                
-                loadHeatmap(); 
-            } catch (error) {
-                console.error('Error loading cities:', error);
-            }
+            const res = await fetch('/api/cities');
+            citiesData = await res.json();
+            renderHeatmap(); 
         }
-        
-        function renderCityDropdown(filteredCities) {
-            const dropdown = document.getElementById('cityDropdown');
-            dropdown.innerHTML = '';
-            
-            if (filteredCities.length === 0) {
-                 const item = document.createElement('div');
-                 item.className = 'dropdown-item';
-                 item.textContent = 'No cities found.';
-                 dropdown.appendChild(item);
-                 dropdown.style.display = 'block';
-                 return;
-            }
 
-            filteredCities.forEach(city => {
-                const item = document.createElement('div');
-                item.className = 'dropdown-item';
-                item.textContent = `${city.name}, ${city.state}`;
-                item.setAttribute('data-city-id', city.id);
-                item.onclick = () => selectCityFromDropdown(city.id, city.name);
-                dropdown.appendChild(item);
+        function setupEvents() {
+            const input = document.getElementById('citySearchInput');
+            input.addEventListener('input', (e) => {
+                const val = e.target.value.toLowerCase();
+                const filtered = citiesData.filter(c => c.name.toLowerCase().includes(val));
+                renderDropdown(filtered);
             });
-            dropdown.style.display = 'block';
+            
+            document.getElementById('checkAqiBtn').addEventListener('click', fetchAQI);
+            
+            // Close dropdown on click outside
+            document.addEventListener('click', (e) => {
+                if (!input.contains(e.target)) document.getElementById('cityDropdown').style.display = 'none';
+            });
         }
 
+        function renderDropdown(cities) {
+            const drop = document.getElementById('cityDropdown');
+            drop.innerHTML = '';
+            if(cities.length === 0) return drop.style.display = 'none';
+            
+            cities.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'dropdown-item';
+                div.textContent = c.name;
+                div.onclick = () => selectCityFromDropdown(c.id, c.name);
+                drop.appendChild(div);
+            });
+            drop.style.display = 'block';
+        }
+
+        // --- FIX 2: Button Enable Logic ---
         function selectCityFromDropdown(id, name) {
             document.getElementById('citySelect').value = id;
-            document.getElementById('citySearchInput').value = `${name}`; // Keep the name visible
+            document.getElementById('citySearchInput').value = name;
             document.getElementById('cityDropdown').style.display = 'none';
+            
+            // HERE IS THE FIX: Enable the button immediately
             document.getElementById('checkAqiBtn').disabled = false;
         }
 
-        async function loadHeatmap() {
-            const heatmapGrid = document.getElementById('heatmapGrid');
-            heatmapGrid.innerHTML = '';
-            
-            // Optimization: Use only the first 15 cities for the dashboard view
-            const priorityCities = citiesData.slice(0, 15);
-            
-            for (const city of priorityCities) {
-                try {
-                    const response = await fetch(`/api/aqi?city=${city.id}`);
-                    const data = await response.json();
-                    
-                    if (data.error) throw new Error(data.error);
-
-                    const { color, label } = getAQIInfo(data.aqi);
-                    
-                    const cityDiv = document.createElement('div');
-                    cityDiv.className = 'heatmap-city';
-                    cityDiv.style.backgroundColor = color;
-                    cityDiv.title = `${city.name}: ${translate(label)}`;
-                    cityDiv.innerHTML = `
-                        <div class="heatmap-name">${city.name}</div>
-                        <div class="heatmap-aqi">${data.aqi}</div>
-                    `;
-                    cityDiv.onclick = () => {
-                        selectCityFromDropdown(city.id, city.name);
-                        checkAQI();
-                        cityDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    };
-                    heatmapGrid.appendChild(cityDiv);
-
-                } catch (error) {
-                    console.error(`Error loading AQI for heatmap ${city.id}:`, error);
-                    const fallbackDiv = document.createElement('div');
-                    fallbackDiv.className = 'heatmap-city';
-                    fallbackDiv.style.backgroundColor = 'var(--bg-hover)';
-                    fallbackDiv.innerHTML = `<div class="heatmap-name">${city.name}</div><div class="heatmap-aqi">--</div>`;
-                    heatmapGrid.appendChild(fallbackDiv);
-                }
-            }
-        }
-
-        function setupEventListeners() {
-            const searchInput = document.getElementById('citySearchInput');
-            
-            // 1. Live Filtering on Input
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                document.getElementById('citySelect').value = ''; 
-                document.getElementById('checkAqiBtn').disabled = true;
-
-                if (query.length < 2) {
-                    document.getElementById('cityDropdown').style.display = 'none';
-                    return;
-                }
-                
-                const filtered = citiesData.filter(city => 
-                    city.name.toLowerCase().includes(query) || 
-                    city.state.toLowerCase().includes(query) ||
-                    city.id.includes(query)
-                ).slice(0, 20); // Limit results to 20
-                
-                renderCityDropdown(filtered);
-            });
-            
-            // 2. Select button trigger
-            document.getElementById('checkAqiBtn').addEventListener('click', checkAQI);
-
-            // 3. Hide dropdown when clicking elsewhere
-            document.addEventListener('click', (e) => {
-                if (!searchInput.contains(e.target) && !document.getElementById('cityDropdown').contains(e.target)) {
-                    document.getElementById('cityDropdown').style.display = 'none';
-                }
-            });
-            
-            // 4. Other actions
-            document.getElementById('shareBtn').addEventListener('click', shareOnWhatsApp);
-            document.getElementById('reportBtn').addEventListener('click', openReportModal);
-            document.getElementById('closeModalBtn').addEventListener('click', closeReportModal);
-            document.getElementById('reportModal').addEventListener('click', (e) => {
-                if (e.target.id === 'reportModal') closeReportModal();
-            });
-            document.getElementById('reportForm').addEventListener('submit', submitReport);
-            document.getElementById('langToggle').addEventListener('click', toggleLanguage);
-            document.getElementById('subscribeForm').addEventListener('submit', submitSubscription);
-        }
-
-        async function checkAQI() {
+        async function fetchAQI() {
             const cityId = document.getElementById('citySelect').value;
-            if (!cityId) {
-                showStatusMessage("Select Error", currentLang === 'en' ? 'Please select a city from the dropdown suggestions first.' : 'कृपया पहले ड्रॉपडाउन सुझावों में से एक शहर चुनें।');
-                return;
-            }
-            currentCityID = cityId;
-
             const btn = document.getElementById('checkAqiBtn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<span class="spinner"></span> <span>${translate('loading')}</span>`;
-            btn.disabled = true;
-
-            try {
-                // Fetch AQI data
-                const aqiResponse = await fetch(`/api/aqi?city=${cityId}`);
-                const aqiData = await aqiResponse.json();
-                if (aqiData.error) throw new Error(aqiData.error);
-
-                // Fetch prediction data (must follow AQI fetch)
-                const predResponse = await fetch(`/api/predict?city=${cityId}&hours=24`);
-                const predData = await predResponse.json();
-                
-                if (predData.error) throw new Error(predData.error);
-
-
-                currentCityName = aqiData.city;
-                displayAQI(aqiData);
-                displayForecast(predData);
-
-                document.getElementById('aqiDisplay').classList.add('show');
-                document.getElementById('aqiDisplay').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                showStatusMessage(currentLang === 'en' ? 'Data Error' : 'डेटा त्रुटि', `${error.message}. ${currentLang === 'en' ? 'Check server logs for details.' : 'विवरण के लिए सर्वर लॉग जांचें।'} `);
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
-        function displayAQI(data) {
-            const { color, label, className } = getAQIInfo(data.aqi);
-            const aqiLabelTranslated = translate(label);
-
-            document.getElementById('cityName').textContent = data.city;
-            document.getElementById('aqiValue').textContent = data.aqi;
-            document.getElementById('aqiLabel').textContent = aqiLabelTranslated;
-            document.getElementById('lastUpdated').textContent = `${translate('last-updated-text')}: ${data.last_updated}`;
+            btn.textContent = "Loading...";
             
-            const hero = document.getElementById('aqiHero');
-            hero.style.backgroundColor = color + '22';
-            hero.style.borderColor = color;
+            try {
+                const [aqiRes, predRes] = await Promise.all([
+                    fetch(`/api/aqi?city=${cityId}`),
+                    fetch(`/api/predict?city=${cityId}`)
+                ]);
+                
+                const aqiData = await aqiRes.json();
+                const predData = await predRes.json();
 
-            document.getElementById('aqiValue').style.color = color;
-            document.getElementById('aqiLabel').style.color = color;
-
-            document.getElementById('pm25Value').textContent = data.pm25 || '--';
-            document.getElementById('pm10Value').textContent = data.pm10 || '--';
-            document.getElementById('o3Value').textContent = data.o3 || '--';
-            document.getElementById('no2Value').textContent = data.no2 || '--';
-
-            updateSafeTime(data.aqi);
-        }
-
-        function updateSafeTime(aqi) {
-            const alert = document.getElementById('safeTimeAlert');
-            let message, alertClass, icon;
-
-            if (aqi <= 100) {
-                message = 'safe-now'; alertClass = 'alert-good'; icon = '✅';
-            } else if (aqi <= 200) {
-                message = 'safe-evening'; alertClass = 'alert-moderate'; icon = '⚠️';
-            } else if (aqi <= 300) {
-                message = 'safe-late'; alertClass = 'alert-vunhealthy'; icon = '⛔';
-            } else {
-                message = 'stay-indoors'; alertClass = 'alert-hazardous'; icon = '🛑';
+                renderDashboard(aqiData, predData);
+            } catch(e) {
+                alert("Error loading data");
+            } finally {
+                btn.textContent = "Check AQI";
             }
-
-            alert.className = `alert-box ${alertClass}`;
-            document.getElementById('safeTimeText').textContent = translate(message);
-            document.getElementById('safeTimeIcon').textContent = icon;
-            document.getElementById('safeTimeIcon').style.color = 'inherit';
         }
 
-        function displayForecast(data) {
+        function renderDashboard(aqiData, predData) {
+            const display = document.getElementById('aqiDisplay');
+            const color = getAQIColor(aqiData.aqi);
+            
+            document.getElementById('displayCityName').textContent = aqiData.city;
+            document.getElementById('displayAqiVal').textContent = aqiData.aqi;
+            document.getElementById('displayAqiVal').style.color = color;
+            document.getElementById('displayStatus').textContent = `Last Updated: ${aqiData.last_updated}`;
+            
             const grid = document.getElementById('forecastGrid');
             grid.innerHTML = '';
-
-            if (!data || !data.length) return;
-
-            data.slice(0, 12).forEach(item => {
-                const { color } = getAQIInfo(item.predicted_aqi);
-
-                const forecastItem = document.createElement('div');
-                forecastItem.className = 'forecast-item';
-                forecastItem.style.borderLeft = `3px solid ${color}`;
-                forecastItem.title = `AQI: ${item.predicted_aqi}`;
-                forecastItem.innerHTML = `
-                    <div class="forecast-hour">${item.hour}h</div>
-                    <div class="forecast-aqi" style="color: ${color}">${item.predicted_aqi}</div>
-                `;
-                grid.appendChild(forecastItem);
+            predData.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'forecast-item';
+                div.innerHTML = `<div>${p.hour}h</div><div style="color:${getAQIColor(p.predicted_aqi)}; font-weight:bold">${p.predicted_aqi}</div>`;
+                grid.appendChild(div);
             });
-        }
-        
-        // --- TRANSLATION & LOGIC HELPERS ---
-        
-        function translate(key) {
-            return translations[currentLang][key] || key;
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'hi' : 'en';
-            document.getElementById('lang-text').textContent = currentLang === 'en' ? '🌐 हिंदी' : '🌐 English';
-            updateUILanguage();
-            loadHeatmap();
-        }
-
-        function updateUILanguage() {
-            Object.keys(translations[currentLang]).forEach(key => {
-                const element = document.getElementById(key);
-                if (element) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                         const placeholderText = translations[currentLang][key];
-                         element.placeholder = placeholderText.includes('...') ? placeholderText : placeholderText + '...';
-                    } else {
-                        element.textContent = translations[currentLang][key];
-                    }
-                }
-            });
-
-            const aqiValue = document.getElementById('aqiValue').textContent;
-            if (aqiValue !== '--') {
-                const aqi = parseInt(aqiValue);
-                const { label } = getAQIInfo(aqi);
-                document.getElementById('aqiLabel').textContent = translate(label);
-                updateSafeTime(aqi);
-            }
-        }
-
-        function getAQIInfo(aqi) {
-            let label;
-            if (aqi <= 50) { label = 'good'; }
-            else if (aqi <= 100) { label = 'moderate'; }
-            else if (aqi <= 200) { label = 'unhealthy'; }
-            else if (aqi <= 300) { label = 'very-unhealthy'; }
-            else { label = 'hazardous'; }
             
-            return { 
-                color: AQI_COLORS[label.replace('-', '').substring(0, 8)], 
-                label: label, 
-                className: `alert-${label}` 
-            };
+            display.style.display = 'block';
         }
 
-        // --- SUBMISSION HANDLERS ---
-        
-        function showStatusMessage(title, message) {
-            const modal = document.getElementById('reportModal');
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('reportForm').style.display = 'none';
-            document.getElementById('reportCity').value = ''; 
+        async function renderHeatmap() {
+            const grid = document.getElementById('heatmapGrid');
+            // Slice the first 15 cities (which we prioritized in backend)
+            const topCities = citiesData.slice(0, 15);
             
-            document.getElementById('form-city-label').textContent = message; 
-
-            modal.classList.add('show');
-        }
-
-        function shareOnWhatsApp() {
-            if (!currentCityName) {
-                 showStatusMessage("Error", currentLang === 'en' ? 'Please check AQI for a city first.' : 'पहले किसी शहर का AQI जांचें।');
-                 return;
-            }
-
-            const aqi = document.getElementById('aqiValue').textContent;
-            const label = document.getElementById('aqiLabel').textContent;
-            const safeTime = document.getElementById('safeTimeText').textContent;
-
-            const text = `🌬️ *AirAware India Alert*\n\n📍 ${currentCityName}\n🔢 AQI: ${aqi}\n📊 Status: ${label}\n\n⚠️ ${safeTime}\n\nCheck your city's air quality now!`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function openReportModal() {
-            if (!currentCityName) {
-                showStatusMessage("Report Error", currentLang === 'en' ? 'Please select a city first' : 'कृपया पहले एक शहर चुनें');
-                return;
-            }
-            document.getElementById('reportCity').value = currentCityName;
-            document.getElementById('reportModal').classList.add('show');
-            document.getElementById('reportForm').style.display = 'block'; 
-            document.getElementById('modal-title').textContent = translate('modal-title');
-            document.getElementById('form-city-label').textContent = translate('form-city-label');
-        }
-
-        function closeReportModal() {
-            document.getElementById('reportModal').classList.remove('show');
-            document.getElementById('reportForm').reset();
-            // Restore form label when closing a message
-            document.getElementById('form-city-label').textContent = translate('form-city-label');
-            document.getElementById('reportForm').style.display = 'block';
-        }
-
-        async function submitReport(e) {
-            e.preventDefault();
-
-            const city = document.getElementById('reportCity').value;
-            const location = document.getElementById('reportLocation').value;
-            const message = document.getElementById('reportMessage').value;
-            
-            const submitBtn = e.submitter;
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = `<span class="spinner"></span>`;
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/reports', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ city, location, message })
-                });
-
-                if (response.ok) {
-                    showStatusMessage(
-                        currentLang === 'en' ? 'Success' : 'सफलता', 
-                        currentLang === 'en' ? 'Report submitted successfully!' : 'रिपोर्ट सफलतापूर्वक जमा की गई!'
-                    );
-                    setTimeout(closeReportModal, 2000);
-                } else {
-                    throw new Error('Server failure');
-                }
-            } catch (error) {
-                console.error('Error submitting report:', error);
-                showStatusMessage(
-                    currentLang === 'en' ? 'Error' : 'त्रुटि', 
-                    currentLang === 'en' ? 'Failed to submit report. Please try again.' : 'रिपोर्ट जमा करने में विफल। कृपया पुनः प्रयास करें।'
-                );
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+            for(const city of topCities) {
+                try {
+                    const res = await fetch(`/api/aqi?city=${city.id}`);
+                    const data = await res.json();
+                    const div = document.createElement('div');
+                    div.className = 'heatmap-city';
+                    div.style.backgroundColor = getAQIColor(data.aqi);
+                    div.innerHTML = `<div>${city.name}</div><div style="font-size:1.2em">${data.aqi}</div>`;
+                    div.onclick = () => {
+                        selectCityFromDropdown(city.id, city.name);
+                        fetchAQI();
+                    };
+                    grid.appendChild(div);
+                } catch(e) { console.log(e); }
             }
         }
-        
-        async function submitSubscription(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('subName').value;
-            const phone = document.getElementById('subPhone').value;
-            const city = document.getElementById('citySelect').value;
-            const language = currentLang;
 
-            if (!city) {
-                showStatusMessage("Subscription Error", currentLang === 'en' ? 'Please select a city first before subscribing.' : 'सदस्यता लेने से पहले कृपया एक शहर चुनें।');
-                return;
-            }
-            
-            const submitBtn = e.submitter;
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = `<span class="spinner"></span>`;
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, phone_or_whatsapp: phone, city, language })
-                });
-
-                if (response.ok) {
-                    showStatusMessage(
-                        currentLang === 'en' ? 'Success' : 'सफलता',
-                        currentLang === 'en' ? 'Subscribed successfully! We will contact you.' : 'सदस्यता सफल रही! हम आपसे संपर्क करेंगे।'
-                    );
-                    document.getElementById('subscribeForm').reset();
-                } else {
-                    const errorData = await response.json();
-                    showStatusMessage(
-                        currentLang === 'en' ? 'Error' : 'त्रुटि',
-                        errorData.message || (currentLang === 'en' ? 'Subscription failed.' : 'सदस्यता विफल रही।')
-                    );
-                }
-            } catch (error) {
-                console.error('Error submitting subscription:', error);
-                showStatusMessage(
-                    currentLang === 'en' ? 'Error' : 'त्रुटि',
-                    currentLang === 'en' ? 'Failed to subscribe. Network error.' : 'सदस्यता विफल रही। नेटवर्क त्रुटि।'
-                );
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                setTimeout(closeReportModal, 2000);
-            }
+        function getAQIColor(aqi) {
+            if (aqi <= 50) return AQI_COLORS['good'];
+            if (aqi <= 100) return AQI_COLORS['moderate'];
+            if (aqi <= 200) return AQI_COLORS['unhealthy'];
+            if (aqi <= 300) return AQI_COLORS['very-unhealthy'];
+            return AQI_COLORS['hazardous'];
         }
     </script>
 </body>
