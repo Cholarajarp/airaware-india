@@ -1,5 +1,4 @@
 # 🌬️ AirAware India
-**A Free, Lightweight Air Quality Monitoring Web Application for India.**
 
 AirAware India provides real-time AQI data, safe time recommendations, and shareable alerts via a single-file, mobile-first web interface powered by a Python Flask backend.
 
