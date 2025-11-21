@@ -44,13 +44,12 @@ FULL_CITY_LIST = [
     {"id": "indore", "name": "Indore", "state": "Madhya Pradesh", "lat": 22.7196, "lon": 75.8577},
     {"id": "thane", "name": "Thane", "state": "Maharashtra", "lat": 19.2183, "lon": 72.9781},
     {"id": "bhopal", "name": "Bhopal", "state": "Madhya Pradesh", "lat": 23.2599, "lon": 77.4126},
-    # Add more cities here for the search functionality to find
     {"id": "patna", "name": "Patna", "state": "Bihar", "lat": 25.5941, "lon": 85.1376},
     {"id": "visakhapatnam", "name": "Visakhapatnam", "state": "Andhra Pradesh", "lat": 17.6868, "lon": 83.2185},
     {"id": "kochi", "name": "Kochi", "state": "Kerala", "lat": 9.9312, "lon": 76.2673},
 ]
 
-# Corresponding Sample Data for the Top 15 (to ensure Heatmap isn't empty)
+# Corresponding Sample Data
 SAMPLE_AQI_DATA = {
     "delhi": {"city": "New Delhi", "aqi": 395, "pm25": 175, "pm10": 250, "o3": 60, "no2": 70},
     "mumbai": {"city": "Mumbai", "aqi": 125, "pm25": 40, "pm10": 70, "o3": 65, "no2": 30},
@@ -91,7 +90,6 @@ def save_json(filepath, data):
 
 def init_data_files():
     """Initializes local JSON files with the explicit Top 15 data."""
-    # Always overwrite cities.json to ensure the order is correct
     with open(CITIES_FILE, 'w') as f:
         json.dump(FULL_CITY_LIST, f, indent=2)
 
@@ -135,11 +133,9 @@ def api_aqi():
 
 @app.route('/api/predict', methods=['GET'])
 def api_predict():
-    """Generates a 24-hour forecast curve based on logic."""
     city_id = request.args.get('city')
     hours = int(request.args.get('hours', 24))
     
-    # Get current AQI base
     aqi_resp = api_aqi().get_json()
     current_aqi = aqi_resp.get('aqi', 150) if 'error' not in aqi_resp else 150
     
@@ -150,11 +146,10 @@ def api_predict():
         future_time = datetime.now() + timedelta(hours=i)
         hour_of_day = future_time.hour
         
-        # Logic: Pollution spikes in morning (8-10am) and evening (6-9pm)
         shift = 0
         if 8 <= hour_of_day <= 10: shift = random.randint(10, 25)
         elif 18 <= hour_of_day <= 21: shift = random.randint(15, 30)
-        elif 2 <= hour_of_day <= 5: shift = random.randint(-20, -5) # Clears up at night
+        elif 2 <= hour_of_day <= 5: shift = random.randint(-20, -5)
         else: shift = random.randint(-5, 5)
         
         current_trend = (current_trend * 0.7) + ((current_aqi + shift) * 0.3)
