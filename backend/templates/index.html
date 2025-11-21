@@ -79,7 +79,6 @@
     </div>
 
     <script>
-        // --- CONFIG & STATE ---
         const AQI_COLORS = {
             'good': '#22C55E', 'moderate': '#FBBF24', 'unhealthy': '#F97316', 
             'very-unhealthy': '#EF4444', 'hazardous': '#991B1B'
@@ -92,19 +91,38 @@
         });
 
         async function loadCities() {
-            const res = await fetch('/api/cities');
-            citiesData = await res.json();
-            renderHeatmap(); 
+            try {
+                const res = await fetch('/api/cities');
+                citiesData = await res.json();
+                console.log(`Loaded ${citiesData.length} cities`); // Debugging line
+                renderHeatmap(); 
+            } catch (e) { console.error("Failed to load cities", e); }
         }
 
         function setupEvents() {
             const input = document.getElementById('citySearchInput');
+            
+            // Search Logic
             input.addEventListener('input', (e) => {
                 const val = e.target.value.toLowerCase();
-                const filtered = citiesData.filter(c => c.name.toLowerCase().includes(val));
+                
+                if (val.length === 0) {
+                    document.getElementById('cityDropdown').style.display = 'none';
+                    return;
+                }
+
+                const filtered = citiesData.filter(c => 
+                    c.name.toLowerCase().includes(val) || 
+                    c.state.toLowerCase().includes(val)
+                );
                 renderDropdown(filtered);
             });
             
+            // Show full list on click if empty
+            input.addEventListener('focus', () => {
+                if(input.value === "") renderDropdown(citiesData.slice(0, 10)); // Show top 10 hints
+            });
+
             document.getElementById('checkAqiBtn').addEventListener('click', fetchAQI);
             
             // Close dropdown on click outside
@@ -116,32 +134,41 @@
         function renderDropdown(cities) {
             const drop = document.getElementById('cityDropdown');
             drop.innerHTML = '';
-            if(cities.length === 0) return drop.style.display = 'none';
             
-            cities.forEach(c => {
+            if(cities.length === 0) {
                 const div = document.createElement('div');
                 div.className = 'dropdown-item';
-                div.textContent = c.name;
-                div.onclick = () => selectCityFromDropdown(c.id, c.name);
+                div.textContent = "No city found";
+                div.style.color = '#aaa';
                 drop.appendChild(div);
-            });
+            } else {
+                cities.forEach(c => {
+                    const div = document.createElement('div');
+                    div.className = 'dropdown-item';
+                    div.textContent = `${c.name}, ${c.state}`; // Added State for clarity
+                    div.onclick = () => selectCityFromDropdown(c.id, c.name);
+                    drop.appendChild(div);
+                });
+            }
             drop.style.display = 'block';
         }
 
-        // --- FIX 2: Button Enable Logic ---
         function selectCityFromDropdown(id, name) {
             document.getElementById('citySelect').value = id;
             document.getElementById('citySearchInput').value = name;
             document.getElementById('cityDropdown').style.display = 'none';
-            
-            // HERE IS THE FIX: Enable the button immediately
-            document.getElementById('checkAqiBtn').disabled = false;
+            document.getElementById('checkAqiBtn').disabled = false; // Enable Button
         }
 
         async function fetchAQI() {
             const cityId = document.getElementById('citySelect').value;
             const btn = document.getElementById('checkAqiBtn');
+            
+            // Safety check
+            if(!cityId) { alert("Please select a city from the list first."); return; }
+
             btn.textContent = "Loading...";
+            btn.disabled = true;
             
             try {
                 const [aqiRes, predRes] = await Promise.all([
@@ -154,9 +181,11 @@
 
                 renderDashboard(aqiData, predData);
             } catch(e) {
-                alert("Error loading data");
+                console.error(e);
+                alert("Error loading data. Please try again.");
             } finally {
                 btn.textContent = "Check AQI";
+                btn.disabled = false;
             }
         }
 
@@ -168,6 +197,7 @@
             document.getElementById('displayAqiVal').textContent = aqiData.aqi;
             document.getElementById('displayAqiVal').style.color = color;
             document.getElementById('displayStatus').textContent = `Last Updated: ${aqiData.last_updated}`;
+            document.getElementById('displayStatus').style.color = '#999';
             
             const grid = document.getElementById('forecastGrid');
             grid.innerHTML = '';
@@ -183,8 +213,7 @@
 
         async function renderHeatmap() {
             const grid = document.getElementById('heatmapGrid');
-            // Slice the first 15 cities (which we prioritized in backend)
-            const topCities = citiesData.slice(0, 15);
+            const topCities = citiesData.slice(0, 15); // Only show top 15 in sidebar
             
             for(const city of topCities) {
                 try {
